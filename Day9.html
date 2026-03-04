@@ -1,0 +1,266 @@
+//Counter
+<html>
+<head>
+  <title>Counter App</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+    }
+    h1 {
+      font-size: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="count">0</h1>
+
+  <button onclick="increase()">Increase</button>
+  <button onclick="decrease()">Decrease</button>
+  <button onclick="reset()">Reset</button>
+
+  <script>
+    let count = 0;
+    const display = document.getElementById("count");
+
+    function increase() {
+      count++;
+      display.textContent = count;
+    }
+
+    function decrease() {
+      count--;
+      display.textContent = count;
+    }
+
+    function reset() {
+      count = 0;
+      display.textContent = count;
+    }
+  </script>
+
+</body>
+</html>
+//Add Item to List
+
+<html>
+<head>
+  <title>Add List Item</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    ul {
+      margin-top: 20px;
+      list-style-type: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="itemInput" placeholder="Enter text">
+  <button onclick="addItem()">Add</button>
+
+  <ul id="list"></ul>
+
+  <script>
+    function addItem() {
+      const input = document.getElementById("itemInput");
+      const text = input.value.trim();
+
+      if (text === "") {
+        alert("Please enter something!");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = text;
+
+      document.getElementById("list").appendChild(li);
+
+      input.value = ""; 
+    }
+  </script>
+
+</body>
+</html>
+//Delete List Item
+
+<html>
+<head>
+  <title>Dynamic List with Delete</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 6px 12px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    ul {
+      margin-top: 20px;
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="itemInput" placeholder="Enter text">
+  <button onclick="addItem()">Add</button>
+
+  <ul id="list"></ul>
+
+  <script>
+    function addItem() {
+      const input = document.getElementById("itemInput");
+      const text = input.value.trim();
+
+      if (text === "") {
+        alert("Please enter something!");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = text;
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+
+      deleteBtn.onclick = function () {
+        li.remove(); 
+      };
+
+      li.appendChild(deleteBtn);
+      document.getElementById("list").appendChild(li);
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
+//Form Validation
+
+<html>
+<head>
+  <title>Simple Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm">
+    <input type="text" id="username" placeholder="Enter username">
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    const form = document.getElementById("myForm");
+    const username = document.getElementById("username");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent page refresh
+
+      if (username.value.trim() === "") {
+        message.textContent = " Username cannot be empty!";
+        message.style.color = "red";
+      } else {
+        message.textContent = "Form submitted successfully!";
+        message.style.color = "green";
+      }
+    });
+  </script>
+
+</body>
+</html>
+//Change Background color
+
+<html>
+<head>
+  <title>Toggle Background</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 100px;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s ease;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="toggleBtn">Change Background</button>
+
+  <script>
+    const button = document.getElementById("toggleBtn");
+    let isChanged = false;
+
+    button.addEventListener("click", function () {
+      if (!isChanged) {
+        document.body.style.backgroundColor = "lightblue";
+        isChanged = true;
+      } else {
+        document.body.style.backgroundColor = "white";
+        isChanged = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
